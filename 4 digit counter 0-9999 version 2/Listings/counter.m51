@@ -1,0 +1,178 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    04/25/2024  01:05:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\counter.obj TO .\Objects\counter PRINT (.\Listings\counter.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\counter.obj (COUNTER)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULCMP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LILDIDATA)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\counter (COUNTER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0015H     UNIT         _DATA_GROUP_
+            DATA    001DH     000AH     UNIT         ?DT?COUNTER
+            IDATA   0027H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00FFH     UNIT         ?C?LIB_CODE
+            CODE    08FFH     00BDH     UNIT         ?PR?MAIN?COUNTER
+            CODE    09BCH     0098H     UNIT         ?PR?_DISPLAY?COUNTER
+            CODE    0A54H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0AE0H     000DH     UNIT         ?C_INITSEG
+            CODE    0AEDH     000CH     UNIT         ?PR?_SDELAY?COUNTER
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\counter (COUNTER)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?COUNTER
+  +--> ?C_INITSEG
+
+?PR?MAIN?COUNTER               0008H    0011H
+  +--> ?PR?_DISPLAY?COUNTER
+
+?PR?_DISPLAY?COUNTER           0019H    0004H
+  +--> ?PR?_SDELAY?COUNTER
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/25/2024  01:05:09  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\counter (COUNTER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        COUNTER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0AEDH         PUBLIC        _sdelay
+  B:0090H.0       PUBLIC        sw1
+  B:0090H.1       PUBLIC        sw2
+  B:0090H.2       PUBLIC        sw3
+  B:0090H.3       PUBLIC        sw4
+  C:08FFH         PUBLIC        main
+  D:001DH         PUBLIC        ch
+  B:00B0H.0       PUBLIC        btn1
+  B:00B0H.1       PUBLIC        btn2
+  B:00B0H.2       PUBLIC        btn3
+  C:09BCH         PUBLIC        _display
+  -------         PROC          _SDELAY
+  D:0007H         SYMBOL        d
+  C:0AEDH         LINE#         242
+  C:0AEDH         LINE#         243
+  C:0AF8H         LINE#         244
+  -------         ENDPROC       _SDELAY
+  -------         PROC          _DISPLAY
+  D:0019H         SYMBOL        n
+  C:09BCH         LINE#         246
+  C:09C4H         LINE#         247
+  C:09D5H         LINE#         248
+  C:09D7H         LINE#         249
+  C:09DCH         LINE#         250
+  C:09DEH         LINE#         252
+  C:09FFH         LINE#         253
+  C:0A01H         LINE#         254
+  C:0A06H         LINE#         255
+  C:0A08H         LINE#         257
+  C:0A29H         LINE#         258
+  C:0A2BH         LINE#         259
+  C:0A30H         LINE#         260
+  C:0A32H         LINE#         262
+  C:0A4AH         LINE#         263
+  C:0A4CH         LINE#         264
+  C:0A51H         LINE#         265
+  C:0A53H         LINE#         266
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:000CH         SYMBOL        i1
+  D:0010H         SYMBOL        j
+  D:0014H         SYMBOL        j1
+  D:0018H         SYMBOL        btn_state
+  -------         ENDDO         
+  C:08FFH         LINE#         268
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  04/25/2024  01:05:09  PAGE 3
+
+
+  C:08FFH         LINE#         269
+  C:090AH         LINE#         270
+  C:0916H         LINE#         271
+  C:091EH         LINE#         272
+  C:092AH         LINE#         273
+  C:092CH         LINE#         274
+  C:092EH         LINE#         275
+  C:0930H         LINE#         276
+  C:0932H         LINE#         277
+  C:0932H         LINE#         278
+  C:0935H         LINE#         279
+  C:0938H         LINE#         280
+  C:093CH         LINE#         281
+  C:093CH         LINE#         282
+  C:093FH         LINE#         283
+  C:0942H         LINE#         284
+  C:0951H         LINE#         285
+  C:0954H         LINE#         286
+  C:096AH         LINE#         287
+  C:0976H         LINE#         288
+  C:0978H         LINE#         289
+  C:097BH         LINE#         290
+  C:097EH         LINE#         291
+  C:0982H         LINE#         292
+  C:0982H         LINE#         293
+  C:0985H         LINE#         294
+  C:0988H         LINE#         295
+  C:0995H         LINE#         296
+  C:0998H         LINE#         297
+  C:09AEH         LINE#         298
+  C:09BAH         LINE#         299
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        COUNTER
+
+  -------         MODULE        ?C?ULDIV
+  C:083CH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+  -------         MODULE        ?C?ULCMP
+  C:08CEH         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+  -------         MODULE        ?C?LILDIDATA
+  C:08E8H         PUBLIC        ?C?LILDIDATA
+  C:08DFH         PUBLIC        ?C?LILDIDATA1
+  C:08E1H         PUBLIC        ?C?LILDIDATA8
+  -------         ENDMOD        ?C?LILDIDATA
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 016DH BYTE (17%) *
+******************************************************************************
+
+Program Size: data=40.0 xdata=0 code=764
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

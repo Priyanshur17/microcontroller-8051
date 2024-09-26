@@ -1,0 +1,336 @@
+C51 COMPILER V9.60.7.0   COUNTER                                                           04/25/2024 01:05:09 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE COUNTER
+OBJECT MODULE PLACED IN .\Objects\counter.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\c
+                    -ounter.lst) TABS(2) OBJECT(.\Objects\counter.obj)
+
+line level    source
+
+   1          /*
+   2          #include <reg51.h>
+   3          #define msec 10
+   4          
+   5          unsigned int arr[10] = {0x40, 0xF9, 0x24, 0x30, 0x19, 0x12, 0x02, 0xF8, 0x00, 0x10};
+   6          sbit d2 = P1^0;
+   7          sbit d1 = P1^1;
+   8          sbit d0 = P1^2;
+   9          sbit d = P1^3;
+  10          unsigned int v1, v2, v3, v4,v0;
+  11          
+  12          void delay(unsigned int count) {
+  13              unsigned int j, k;
+  14              for (j = 0; j <= count; j++)
+  15                  for (k = 0; k <= 5; k++);
+  16          }
+  17          
+  18          void main() {
+  19              v1 = 9;
+  20              v2 = 9;
+  21              v3 = 9;
+  22              v4 = 9;
+  23          
+  24              while (1) {
+  25                  P2 = 0xFF;
+  26                  d = 1;
+  27                  d2 = d0 = d1 = 0;
+  28                  P2 = arr[v1];
+  29                  delay(msec);
+  30          
+  31                  P2 = 0xFF;
+  32                  d0 = 1;
+  33                  d1 = d = d2 = 0;
+  34                  P2 = arr[v2];
+  35                  delay(msec);
+  36          
+  37                  P2 = 0xFF;
+  38                  d1 = 1;
+  39                  d2 = d = d0 = 0;
+  40                  P2 = arr[v3];
+  41                  delay(msec);
+  42          
+  43                  P2 = 0xFF;
+  44                  d2 = 1;
+  45                  d1 = d = d0 = 0;
+  46                  P2 = arr[v4];
+  47                  delay(msec);
+  48          
+  49                  if (v1 == 0 && v2 == 0 && v3 == 0 && v4 == 0) {
+  50                      // If the counter reaches 0000, reset to 9999
+  51                      v1 = 9;
+  52                      v2 = 9;
+  53                      v3 = 9;
+  54                      v4 = 9;
+C51 COMPILER V9.60.7.0   COUNTER                                                           04/25/2024 01:05:09 PAGE 2   
+
+  55                  } else {
+  56                      // Decrement the counter
+  57                     // if (v0 == 0) {
+  58                         // v0 = 9;
+  59                          if (v1 > 0) v1--;
+  60                          else {
+  61                              v1 = 9;
+  62                              if (v2 > 0) v2--;
+  63                              else {
+  64                                  v2 = 9;
+  65                                  if (v3 > 0) v3--;
+  66                                  else {
+  67                                      v3 = 9;
+  68                                      if (v4 > 0) v4--;
+  69                                      else v4 = 9;
+  70                                  }
+  71                              }
+  72                          }
+  73                      //} else {
+  74                         // v0--;
+  75                     // }
+  76                  }
+  77              }
+  78          }
+  79          */
+  80          
+  81          /*
+  82          #include <reg51.h>
+  83          #define msec 100
+  84          unsigned int arr[10]={0x40,0xF9,0x24,0x30,0x19,0x12,0x02,0xF8,0x00,0x10};
+  85          sbit d2=P1^0;
+  86          sbit d1=P1^1;
+  87          sbit d0=P1^2;
+  88          sbit d= P1^3;
+  89          unsigned int v1,v2,v3,v4,v0;
+  90          void delay(unsigned int count)
+  91          {
+  92          unsigned int j,k;
+  93          for (j=0;j<=count;j++)
+  94          for (k=0;k<=5;k++);
+  95          }
+  96          void main()
+  97          {
+  98           v1=v2=v3=v4=v0=0;
+  99           while(1)
+ 100          {  
+ 101          {
+ 102               v0=v0+1;
+ 103          if(v0==2)
+ 104          {
+ 105          v0=1;
+ 106          v1=v1+1;
+ 107          }
+ 108          
+ 109              P2=0xFF;
+ 110             if(v1==10)
+ 111          {
+ 112          v1=0;
+ 113          v2=v2+1;
+ 114          }
+ 115          d = 1;
+ 116          d2 = d0 = d1= 0;
+C51 COMPILER V9.60.7.0   COUNTER                                                           04/25/2024 01:05:09 PAGE 3   
+
+ 117          P2 = arr[v1];
+ 118          delay(msec);
+ 119          
+ 120          
+ 121          P2=0xFF;
+ 122             if(v2==10)
+ 123          {
+ 124          v2=0;
+ 125          v3=v3+1;
+ 126          }
+ 127          d0 = 1;
+ 128          d1 =d=d2= 0;
+ 129          P2 = arr[v2];
+ 130          delay(msec);
+ 131          
+ 132          
+ 133          P2=0xFF;
+ 134             if(v3==10)
+ 135          {
+ 136          v3=0;
+ 137          v4=v4+1;
+ 138          }
+ 139          d1 = 1;
+ 140          d2 =d=d0= 0;
+ 141          P2 = arr[v3];
+ 142          delay(msec);
+ 143          
+ 144          
+ 145          P2=0xFF;
+ 146          if(v4==10)
+ 147          {
+ 148          v1=0;
+ 149          v2=0;
+ 150          v3=0;
+ 151          v4=0;
+ 152              }
+ 153          d2 = 1;
+ 154          d1 =d=d0= 0;
+ 155          P2 = arr[v4];
+ 156          delay(msec);
+ 157          
+ 158          
+ 159          delay(msec);
+ 160          P2=0xFF;
+ 161          }
+ 162          }
+ 163          }
+ 164          
+ 165          
+ 166          #include<reg51.h> 
+ 167          #define led P2
+ 168          sbit sw1=P1^0;
+ 169          sbit sw2=P1^1;
+ 170          sbit sw3=P1^2;
+ 171          sbit sw4=P1^3;
+ 172          unsigned char ch[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
+ 173          //void delay (int);
+ 174          void display (unsigned long int);
+ 175          void sdelay (char);
+ 176          
+ 177          void delay (int d)
+ 178          {
+C51 COMPILER V9.60.7.0   COUNTER                                                           04/25/2024 01:05:09 PAGE 4   
+
+ 179            unsigned char i;
+ 180            for(;d>0;d--)
+ 181            {
+ 182              for(i=250;i>0;i--);
+ 183              for(i=248;i>0;i--);
+ 184            }
+ 185          }
+ 186          
+ 187          void sdelay (char d)
+ 188          {
+ 189            for(;d>0;d--);
+ 190          }
+ 191          
+ 192          void display (unsigned long int n)
+ 193          {
+ 194            led=ch[n/1000];
+ 195            sw1=1;
+ 196            sdelay(30);
+ 197            sw1=0;
+ 198            
+ 199            led=ch[(n/100)%10];
+ 200            sw2=1;
+ 201            sdelay(30);
+ 202            sw2=0;
+ 203            
+ 204            led=ch[(n/10)%10];
+ 205            sw3=1;
+ 206            sdelay(30);
+ 207            sw3=0;
+ 208            
+ 209            led=ch[n%10];
+ 210            sw4=1;
+ 211            sdelay(30);
+ 212            sw4=0;
+ 213          }
+ 214          
+ 215          void main()
+ 216          {
+ 217            unsigned long int i=9999;
+ 218            
+ 219            while(1)
+ 220            {
+ 221              i=--i;
+ 222              display(i);
+ 223              if(i==0)
+ 224                i=9999;
+ 225            }
+ 226          }
+ 227          */
+ 228          
+ 229          #include <reg51.h>
+ 230          
+ 231          #define led P2
+ 232          sbit sw1 = P1^0;
+ 233          sbit sw2 = P1^1;
+ 234          sbit sw3 = P1^2;
+ 235          sbit sw4 = P1^3;
+ 236          sbit btn1 = P3^0;
+ 237          sbit btn2 = P3^1;
+ 238          sbit btn3 = P3^2;
+ 239          
+ 240          unsigned char ch[] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90};
+C51 COMPILER V9.60.7.0   COUNTER                                                           04/25/2024 01:05:09 PAGE 5   
+
+ 241          
+ 242          void sdelay(char d) {
+ 243   1          for (; d > 0; d--);
+ 244   1      }
+ 245          
+ 246          void display(unsigned long int n) {
+ 247   1          led = ch[n/1000];
+ 248   1          sw1 = 1;
+ 249   1          sdelay(30);
+ 250   1          sw1 = 0;
+ 251   1      
+ 252   1          led = ch[(n/100)%10];
+ 253   1          sw2 = 1;
+ 254   1          sdelay(30);
+ 255   1          sw2 = 0;
+ 256   1      
+ 257   1          led = ch[(n/10)%10];
+ 258   1          sw3 = 1;
+ 259   1          sdelay(30);
+ 260   1          sw3 = 0;
+ 261   1      
+ 262   1          led = ch[n%10];
+ 263   1          sw4 = 1;
+ 264   1          sdelay(30);
+ 265   1          sw4 = 0;
+ 266   1      }
+ 267          
+ 268          void main() {
+ 269   1        unsigned long int i=9999;
+ 270   1        unsigned long int i1=i;
+ 271   1        unsigned long int j=0;
+ 272   1        unsigned long int j1=j;
+ 273   1          unsigned char btn_state = 0;
+ 274   1         btn1=0;
+ 275   1        btn2=0;
+ 276   1        btn3=0;
+ 277   1          while (1) {
+ 278   2              if (btn1 ) {
+ 279   3                  btn_state = 1;
+ 280   3      while(btn_state)
+ 281   3        {
+ 282   4          if(btn3)
+ 283   4            btn_state=0;
+ 284   4          i=--i;
+ 285   4          display(i);
+ 286   4          if(i==j)
+ 287   4            i=i1;
+ 288   4        }
+ 289   3              } else if (btn2 ) {
+ 290   3                  btn_state = 1;
+ 291   3        while(btn_state)
+ 292   3        {
+ 293   4          if(btn3)
+ 294   4            btn_state=0;
+ 295   4          j=++j;
+ 296   4          display(j);
+ 297   4          if(j==i)
+ 298   4            j=j1;
+ 299   4        }
+ 300   3              } 
+ 301   2          }
+ 302   1      }
+C51 COMPILER V9.60.7.0   COUNTER                                                           04/25/2024 01:05:09 PAGE 6   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    353    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10      21
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
