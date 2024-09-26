@@ -1,0 +1,67 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Saeed\Desktop\8051 Calculator Code\Code\calc.uvproj
+Project File Date:  06/01/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling code.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RETURN?CODE
+Program Size: data=16.0 xdata=0 code=2318
+creating hex file from "calc"...
+"calc" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling code.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RETURN?CODE
+Program Size: data=16.0 xdata=0 code=2307
+creating hex file from "calc"...
+"calc" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling code.c...
+code.c(8): error C301: identifier expected
+CODE.C(25): error C141: syntax error near '13'
+CODE.C(25): error C141: syntax error near 'int'
+CODE.C(25): error C141: syntax error near ')'
+CODE.C(109): error C211: call not to a function
+CODE.C(109): error C208: 'function': too many actual parameters
+Target not created
+Build target 'Target 1'
+compiling code.c...
+CODE.C(25): error C141: syntax error near '13'
+CODE.C(25): error C141: syntax error near 'int'
+CODE.C(25): error C141: syntax error near ')'
+CODE.C(109): error C211: call not to a function
+CODE.C(109): error C208: 'function': too many actual parameters
+CODE.C(245): error C211: call not to a function
+CODE.C(245): error C208: 'function': too many actual parameters
+CODE.C(259): error C211: call not to a function
+CODE.C(259): error C208: 'function': too many actual parameters
+CODE.C(267): error C141: syntax error near '13'
+CODE.C(267): error C141: syntax error near 'int'
+CODE.C(267): error C129: missing ';' before ')'
+Target not created
+Build target 'Target 1'
+compiling code.c...
+linking...
+Program Size: data=21.0 xdata=0 code=2402
+creating hex file from "calc"...
+"calc" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling code.c...
+linking...
+Program Size: data=21.0 xdata=0 code=1264
+creating hex file from "calc"...
+"calc" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling code.c...
+linking...
+Program Size: data=21.0 xdata=0 code=1264
+creating hex file from "calc"...
+"calc" - 0 Error(s), 0 Warning(s).
