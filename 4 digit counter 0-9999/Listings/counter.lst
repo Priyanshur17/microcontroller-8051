@@ -1,0 +1,192 @@
+C51 COMPILER V9.60.7.0   COUNTER                                                           02/20/2024 10:32:08 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE COUNTER
+OBJECT MODULE PLACED IN .\Objects\counter.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\c
+                    -ounter.lst) TABS(2) OBJECT(.\Objects\counter.obj)
+
+line level    source
+
+   1          /*
+   2          #include <reg51.h>
+   3          #define msec 10
+   4          
+   5          unsigned int arr[10] = {0x40, 0xF9, 0x24, 0x30, 0x19, 0x12, 0x02, 0xF8, 0x00, 0x10};
+   6          sbit d2 = P1^0;
+   7          sbit d1 = P1^1;
+   8          sbit d0 = P1^2;
+   9          sbit d = P1^3;
+  10          unsigned int v1, v2, v3, v4,v0;
+  11          
+  12          void delay(unsigned int count) {
+  13              unsigned int j, k;
+  14              for (j = 0; j <= count; j++)
+  15                  for (k = 0; k <= 5; k++);
+  16          }
+  17          
+  18          void main() {
+  19              v1 = 9;
+  20              v2 = 9;
+  21              v3 = 9;
+  22              v4 = 9;
+  23          
+  24              while (1) {
+  25                  P2 = 0xFF;
+  26                  d = 1;
+  27                  d2 = d0 = d1 = 0;
+  28                  P2 = arr[v1];
+  29                  delay(msec);
+  30          
+  31                  P2 = 0xFF;
+  32                  d0 = 1;
+  33                  d1 = d = d2 = 0;
+  34                  P2 = arr[v2];
+  35                  delay(msec);
+  36          
+  37                  P2 = 0xFF;
+  38                  d1 = 1;
+  39                  d2 = d = d0 = 0;
+  40                  P2 = arr[v3];
+  41                  delay(msec);
+  42          
+  43                  P2 = 0xFF;
+  44                  d2 = 1;
+  45                  d1 = d = d0 = 0;
+  46                  P2 = arr[v4];
+  47                  delay(msec);
+  48          
+  49                  if (v1 == 0 && v2 == 0 && v3 == 0 && v4 == 0) {
+  50                      // If the counter reaches 0000, reset to 9999
+  51                      v1 = 9;
+  52                      v2 = 9;
+  53                      v3 = 9;
+  54                      v4 = 9;
+C51 COMPILER V9.60.7.0   COUNTER                                                           02/20/2024 10:32:08 PAGE 2   
+
+  55                  } else {
+  56                      // Decrement the counter
+  57                     // if (v0 == 0) {
+  58                         // v0 = 9;
+  59                          if (v1 > 0) v1--;
+  60                          else {
+  61                              v1 = 9;
+  62                              if (v2 > 0) v2--;
+  63                              else {
+  64                                  v2 = 9;
+  65                                  if (v3 > 0) v3--;
+  66                                  else {
+  67                                      v3 = 9;
+  68                                      if (v4 > 0) v4--;
+  69                                      else v4 = 9;
+  70                                  }
+  71                              }
+  72                          }
+  73                      //} else {
+  74                         // v0--;
+  75                     // }
+  76                  }
+  77              }
+  78          }
+  79          */
+  80          
+  81          
+  82          #include <reg51.h>
+  83          #define msec 100
+  84          unsigned int arr[10]={0x40,0xF9,0x24,0x30,0x19,0x12,0x02,0xF8,0x00,0x10};
+  85          sbit d2=P1^0;
+  86          sbit d1=P1^1;
+  87          sbit d0=P1^2;
+  88          sbit d= P1^3;
+  89          unsigned int v1,v2,v3,v4,v0;
+  90          void delay(unsigned int count)
+  91          {
+  92   1      unsigned int j,k;
+  93   1      for (j=0;j<=count;j++)
+  94   1      for (k=0;k<=5;k++);
+  95   1      }
+  96          void main()
+  97          {
+  98   1       v1=v2=v3=v4=v0=0;
+  99   1       while(1)
+ 100   1      {  
+ 101   2      {
+ 102   3           v0=v0+1;
+ 103   3      if(v0==2)
+ 104   3      {
+ 105   4      v0=1;
+ 106   4      v1=v1+1;
+ 107   4      }
+ 108   3      
+ 109   3          P2=0xFF;
+ 110   3         if(v1==10)
+ 111   3      {
+ 112   4      v1=0;
+ 113   4      v2=v2+1;
+ 114   4      }
+ 115   3      d = 1;
+ 116   3      d2 = d0 = d1= 0;
+C51 COMPILER V9.60.7.0   COUNTER                                                           02/20/2024 10:32:08 PAGE 3   
+
+ 117   3      P2 = arr[v1];
+ 118   3      delay(msec);
+ 119   3      
+ 120   3      
+ 121   3      P2=0xFF;
+ 122   3         if(v2==10)
+ 123   3      {
+ 124   4      v2=0;
+ 125   4      v3=v3+1;
+ 126   4      }
+ 127   3      d0 = 1;
+ 128   3      d1 =d=d2= 0;
+ 129   3      P2 = arr[v2];
+ 130   3      delay(msec);
+ 131   3      
+ 132   3      
+ 133   3      P2=0xFF;
+ 134   3         if(v3==10)
+ 135   3      {
+ 136   4      v3=0;
+ 137   4      v4=v4+1;
+ 138   4      }
+ 139   3      d1 = 1;
+ 140   3      d2 =d=d0= 0;
+ 141   3      P2 = arr[v3];
+ 142   3      delay(msec);
+ 143   3      
+ 144   3      
+ 145   3      P2=0xFF;
+ 146   3      if(v4==10)
+ 147   3      {
+ 148   4      v1=0;
+ 149   4      v2=0;
+ 150   4      v3=0;
+ 151   4      v4=0;
+ 152   4          }
+ 153   3      d2 = 1;
+ 154   3      d1 =d=d0= 0;
+ 155   3      P2 = arr[v4];
+ 156   3      delay(msec);
+ 157   3      
+ 158   3      
+ 159   3      delay(msec);
+ 160   3      P2=0xFF;
+ 161   3      }
+ 162   2      }
+ 163   1      }
+ 164          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    250    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     30    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
