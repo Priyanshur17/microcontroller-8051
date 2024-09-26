@@ -1,0 +1,341 @@
+C51 COMPILER V9.60.7.0   KEYPAD                                                            04/17/2024 02:57:13 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE KEYPAD
+OBJECT MODULE PLACED IN keypad.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE keypad.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          // #include<reg52.h>               
+   2          // #include<lcd.h>
+   3          
+   4          // //LCD Module Connections
+   5          // sbit RS = P0^0;                                                                   
+   6          // sbit EN = P0^1;                            
+   7          // sbit D0 = P2^0;
+   8          // sbit D1 = P2^1;
+   9          // sbit D2 = P2^2;
+  10          // sbit D3 = P2^3;
+  11          // sbit D4 = P2^4;
+  12          // sbit D5 = P2^5;
+  13          // sbit D6 = P2^6;
+  14          // sbit D7 = P2^7;
+  15          // //End LCD Module Connections
+  16          
+  17          // //Keypad Connections
+  18          // sbit R1 = P1^0;
+  19          // sbit R2 = P1^1;
+  20          // sbit R3 = P1^2;
+  21          // sbit R4 = P1^3;
+  22          // sbit C1 = P1^4;
+  23          // sbit C2 = P1^5;
+  24          // sbit C3 = P1^6;
+  25          // sbit C4 = P1^7;
+  26          // //End Keypad Connections
+  27          
+  28          // void Delay(int a)
+  29          // {
+  30          //     int j;
+  31          //     int i;
+  32          //     for(i=0;i<a;i++)
+  33          //     {
+  34          //         for(j=0;j<100;j++)
+  35          //         {
+  36          //         }
+  37          //     }
+  38          // }
+  39          
+  40          // char Read_Keypad()
+  41          // {
+  42          //  C1=1;
+  43          //  C2=1;
+  44          //  C3=1;
+  45          //  C4=1;
+  46          //  R1=0;
+  47          //  R2=1;
+  48          //  R3=1;
+  49          //  R4=1;
+  50          //  if(C1==0){Delay(100);while(C1==0);return '7';}
+  51          //  if(C2==0){Delay(100);while(C2==0);return '8';}
+  52          //  if(C3==0){Delay(100);while(C3==0);return '9';}
+  53          //  if(C4==0){Delay(100);while(C4==0);return '/';}
+  54          //  R1=1;
+  55          //  R2=0;
+C51 COMPILER V9.60.7.0   KEYPAD                                                            04/17/2024 02:57:13 PAGE 2   
+
+  56          //  R3=1;
+  57          //  R4=1;
+  58          //  if(C1==0){Delay(100);while(C1==0);return '4';}
+  59          //  if(C2==0){Delay(100);while(C2==0);return '5';}
+  60          //  if(C3==0){Delay(100);while(C3==0);return '6';}
+  61          //  if(C4==0){Delay(100);while(C4==0);return 'X';}
+  62          //  R1=1;
+  63          //  R2=1;
+  64          //  R3=0;
+  65          //  R4=1;
+  66          //  if(C1==0){Delay(100);while(C1==0);return '1';}
+  67          //  if(C2==0){Delay(100);while(C2==0);return '2';}
+  68          //  if(C3==0){Delay(100);while(C3==0);return '3';}
+  69          //  if(C4==0){Delay(100);while(C4==0);return '-';}
+  70          //  R1=1;
+  71          //  R2=1;
+  72          //  R3=1;
+  73          //  R4=0;
+  74          //  if(C1==0){Delay(100);while(C1==0);return 'C';}
+  75          //  if(C2==0){Delay(100);while(C2==0);return '0';}
+  76          //  if(C3==0){Delay(100);while(C3==0);return '=';}
+  77          //  if(C4==0){Delay(100);while(C4==0);return '+';}
+  78          //  return 0 ;
+  79          // }
+  80          
+  81          // void main()
+  82          // {
+  83          //  int i=0;
+  84          //  char c,p;
+  85          //  Lcd8_Init();
+  86          //  c='_';                                  
+  87          //   while(1)
+  88          //   {                                   
+  89          //    Lcd8_Set_Cursor(1,1);
+  90          //    Lcd8_Write_String("Keys Pressed:");
+  91          //    Lcd8_Set_Cursor(2,1);
+  92          //    Lcd8_Write_String("Times:");
+  93          //     while(!(c = Read_Keypad()));
+  94          //    p=c;
+  95          //    while(p==c)
+  96          //    {
+  97          //      i++;
+  98          //      Lcd8_Set_Cursor(1,14);
+  99          //      Lcd8_Write_Char(c);
+ 100          //      Lcd8_Set_Cursor(2,7);
+ 101          //      Lcd8_Write_Char(i+48);
+ 102          //      Delay(100);
+ 103          //      while(!(c = Read_Keypad()));
+ 104          //    }
+ 105          //   i=0;
+ 106          //   Lcd8_Clear();
+ 107          //  }
+ 108          // }
+ 109          
+ 110          
+ 111          
+ 112          // #include<reg52.h>               
+ 113          // #include<lcd.h>
+ 114          
+ 115          
+ 116          
+ 117          // //Keypad Connections
+C51 COMPILER V9.60.7.0   KEYPAD                                                            04/17/2024 02:57:13 PAGE 3   
+
+ 118          // sbit R1 = P1^0;
+ 119          // sbit R2 = P1^1;
+ 120          // sbit R3 = P1^2;
+ 121          // sbit R4 = P1^3;
+ 122          // sbit C1 = P1^4;
+ 123          // sbit C2 = P1^5;
+ 124          // sbit C3 = P1^6;
+ 125          // sbit C4 = P1^7;
+ 126          // //End Keypad Connections
+ 127          
+ 128          // void Delay(int a)
+ 129          // {
+ 130          //     int j;
+ 131          //     int i;
+ 132          //     for(i=0;i<a;i++)
+ 133          //     {
+ 134          //         for(j=0;j<100;j++)
+ 135          //         {
+ 136          //         }
+ 137          //     }
+ 138          // }
+ 139          
+ 140          // char Read_Keypad()
+ 141          // {
+ 142          //  C1=1;
+ 143          //  C2=1;
+ 144          //  C3=1;
+ 145          //  C4=1;
+ 146          //  R1=0;
+ 147          //  R2=1;
+ 148          //  R3=1;
+ 149          //  R4=1;
+ 150          //  if(C1==0){Delay(100);while(C1==0);return '7';}
+ 151          //  if(C2==0){Delay(100);while(C2==0);return '8';}
+ 152          //  if(C3==0){Delay(100);while(C3==0);return '9';}
+ 153          //  if(C4==0){Delay(100);while(C4==0);return '/';}
+ 154          //  R1=1;
+ 155          //  R2=0;
+ 156          //  R3=1;
+ 157          //  R4=1;
+ 158          //  if(C1==0){Delay(100);while(C1==0);return '4';}
+ 159          //  if(C2==0){Delay(100);while(C2==0);return '5';}
+ 160          //  if(C3==0){Delay(100);while(C3==0);return '6';}
+ 161          //  if(C4==0){Delay(100);while(C4==0);return 'X';}
+ 162          //  R1=1;
+ 163          //  R2=1;
+ 164          //  R3=0;
+ 165          //  R4=1;
+ 166          //  if(C1==0){Delay(100);while(C1==0);return '1';}
+ 167          //  if(C2==0){Delay(100);while(C2==0);return '2';}
+ 168          //  if(C3==0){Delay(100);while(C3==0);return '3';}
+ 169          //  if(C4==0){Delay(100);while(C4==0);return '-';}
+ 170          //  R1=1;
+ 171          //  R2=1;
+ 172          //  R3=1;
+ 173          //  R4=0;
+ 174          //  if(C1==0){Delay(100);while(C1==0);return 'C';}
+ 175          //  if(C2==0){Delay(100);while(C2==0);return '0';}
+ 176          //  if(C3==0){Delay(100);while(C3==0);return '=';}
+ 177          //  if(C4==0){Delay(100);while(C4==0);return '+';}
+ 178          //  return 0 ;
+ 179          // }
+C51 COMPILER V9.60.7.0   KEYPAD                                                            04/17/2024 02:57:13 PAGE 4   
+
+ 180          // unsigned int ch[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+ 181          // unsigned int r,i;
+ 182          // void main()
+ 183          // {
+ 184          //  int i=0;
+ 185          //  char c,p;
+ 186          //  P2=0xc0;
+ 187          //  c='_';                                  
+ 188          //   while(1)
+ 189          //   {                                   
+ 190            
+ 191          
+ 192          //     c = Read_Keypad();
+ 193            
+ 194          //     r = c-'0';
+ 195          //  if(r>9 || r<0){continue;}
+ 196          
+ 197          //  i=0;
+ 198          //  while(i<=r){
+ 199          //    P2 = ch[i];
+ 200          //    i++;
+ 201          //    Delay(650);
+ 202          //  }
+ 203          //  P2=0xc0;
+ 204          //  }
+ 205          // }
+ 206          
+ 207          
+ 208          
+ 209          
+ 210          
+ 211          #include<reg52.h>              
+ 212          #include<lcd.h>
+ 213          
+ 214          
+ 215          
+ 216          //Keypad Connections
+ 217          sbit R1 = P1^0;
+ 218          sbit R2 = P1^1;
+ 219          sbit R3 = P1^2;
+ 220          sbit R4 = P1^3;
+ 221          sbit C1 = P1^4;
+ 222          sbit C2 = P1^5;
+ 223          sbit C3 = P1^6;
+ 224          sbit C4 = P1^7;
+ 225          //End Keypad Connections
+ 226          
+ 227          void Delay(int a)
+ 228          {
+ 229   1          int j;
+ 230   1          int i;
+ 231   1          for(i=0;i<a;i++)
+ 232   1          {
+ 233   2              for(j=0;j<100;j++)
+ 234   2              {
+ 235   3              }
+ 236   2          }
+ 237   1      }
+ 238          
+ 239          char Read_Keypad()
+ 240          {
+ 241   1       C1=1;
+C51 COMPILER V9.60.7.0   KEYPAD                                                            04/17/2024 02:57:13 PAGE 5   
+
+ 242   1       C2=1;
+ 243   1       C3=1;
+ 244   1       C4=1;
+ 245   1       R1=0;
+ 246   1       R2=1;
+ 247   1       R3=1;
+ 248   1       R4=1;
+ 249   1       if(C1==0){Delay(100);while(C1==0);return '7';}
+ 250   1       if(C2==0){Delay(100);while(C2==0);return '8';}
+ 251   1       if(C3==0){Delay(100);while(C3==0);return '9';}
+ 252   1       if(C4==0){Delay(100);while(C4==0);return '/';}
+ 253   1       R1=1;
+ 254   1       R2=0;
+ 255   1       R3=1;
+ 256   1       R4=1;
+ 257   1       if(C1==0){Delay(100);while(C1==0);return '4';}
+ 258   1       if(C2==0){Delay(100);while(C2==0);return '5';}
+ 259   1       if(C3==0){Delay(100);while(C3==0);return '6';}
+ 260   1       if(C4==0){Delay(100);while(C4==0);return 'X';}
+ 261   1       R1=1;
+ 262   1       R2=1;
+ 263   1       R3=0;
+ 264   1       R4=1;
+ 265   1       if(C1==0){Delay(100);while(C1==0);return '1';}
+ 266   1       if(C2==0){Delay(100);while(C2==0);return '2';}
+ 267   1       if(C3==0){Delay(100);while(C3==0);return '3';}
+ 268   1       if(C4==0){Delay(100);while(C4==0);return '-';}
+ 269   1       R1=1;
+ 270   1       R2=1;
+ 271   1       R3=1;
+ 272   1       R4=0;
+ 273   1       if(C1==0){Delay(100);while(C1==0);return 'C';}
+ 274   1       if(C2==0){Delay(100);while(C2==0);return '0';}
+ 275   1       if(C3==0){Delay(100);while(C3==0);return '=';}
+ 276   1       if(C4==0){Delay(100);while(C4==0);return '+';}
+ 277   1       return 0 ;
+ 278   1      }
+ 279          unsigned int arr[10] = {0x40, 0xF9, 0x24, 0x30, 0x19, 0x12, 0x02, 0xF8, 0x00, 0x10};
+ 280          unsigned int r;
+ 281          
+ 282          sbit d2 = P3 ^ 0;
+ 283          sbit d1 = P3 ^ 1;
+ 284          sbit d0 = P3 ^ 2;
+ 285          sbit d = P3 ^ 3;
+ 286          void main()
+ 287          {
+ 288   1        int i=0;
+ 289   1        char c,p;
+ 290   1        P2=0xc0;
+ 291   1        c='_';                                  
+ 292   1        while(1)
+ 293   1        {                                   
+ 294   2        
+ 295   2      
+ 296   2          c = Read_Keypad();
+ 297   2        
+ 298   2          r = c-'0';
+ 299   2        if(r>9 || r<0){continue;}
+ 300   2      
+ 301   2        d=1;
+ 302   2        d1=d2=d0=0;
+ 303   2        P2=arr[r];
+C51 COMPILER V9.60.7.0   KEYPAD                                                            04/17/2024 02:57:13 PAGE 6   
+
+ 304   2       }
+ 305   1      }
+*** WARNING C280 IN LINE 289 OF keypad.c: 'p': unreferenced local variable
+*** WARNING C290 IN LINE 84 OF keypad.c: missing return value
+*** WARNING C290 IN LINE 176 OF keypad.c: missing return value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    915    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     22      18
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)

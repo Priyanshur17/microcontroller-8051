@@ -1,0 +1,240 @@
+C51 COMPILER V9.60.7.0   LAB2                                                              02/20/2024 13:24:59 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LAB2
+OBJECT MODULE PLACED IN .\Objects\lab2.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lab2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lab2
+                    -.lst) TABS(2) OBJECT(.\Objects\lab2.obj)
+
+line level    source
+
+   1          #include <REG51.H>
+   2          
+   3          sbit UP_LED = P3^0;
+   4          sbit DOWN_LED = P3^1;
+   5          
+   6          sbit a = P2^0;
+   7          sbit b = P2^1;
+   8          sbit c = P2^2;
+   9          sbit d = P2^3;
+  10          sbit e = P2^4;
+  11          sbit f = P2^5;
+  12          sbit g = P2^6;
+  13          int currentFloor=0;
+  14          int floo;// Assume the lift starts from the ground floor
+  15          unsigned int segments[] = {0x40,0xF9,0x24,0x30,0x19,0x12,0x02,0xF8,0x00,0x10};
+  16          
+  17          void displayDigit(unsigned int digit) {
+  18   1          P2 = segments[digit];
+  19   1      }
+  20          
+  21          void delay(unsigned int count) {
+  22   1          unsigned int i, j;
+  23   1          for (i = 0; i < count; i++)
+  24   1              for (j = 0; j < 500; j++);
+  25   1      }
+  26          
+  27          void moveUp(int diff) {
+  28   1          UP_LED = 1;  // Indicate up movement
+  29   1          DOWN_LED = 0;  // No down movement
+  30   1           // Moved the declaration of floo to the top of the function
+  31   1          for (floo = currentFloor; floo <= currentFloor+diff; floo++) {
+  32   2              displayDigit(floo % 10);
+  33   2              delay(500);  // Simulate movement delay
+  34   2          }
+  35   1          currentFloor = floo - 1; // Update the current floor after the loop
+  36   1      }
+  37          
+  38          void moveDown(int diff) {
+  39   1          UP_LED = 0;  // No up movement
+  40   1          DOWN_LED = 1;  // Indicate down movement
+  41   1           // Moved the declaration of floo to the top of the function
+  42   1          for (floo = currentFloor; floo >= currentFloor-diff; floo--) {
+  43   2              displayDigit(floo % 10);
+  44   2              delay(500);  // Simulate movement delay
+  45   2          }
+  46   1          currentFloor = floo + 1; // Update the current floor after the loop
+  47   1      }
+  48          
+  49          void stop(int currentFloor) {
+  50   1          UP_LED = 0;  // No up movement
+  51   1          DOWN_LED = 0;  // No down movement
+  52   1          displayDigit(currentFloor % 10);  // Display current floor
+  53   1          delay(500);  // Simulate stop delay
+  54   1      }
+C51 COMPILER V9.60.7.0   LAB2                                                              02/20/2024 13:24:59 PAGE 2   
+
+  55          
+  56          void control(int targetFloor) {
+  57   1          if (targetFloor > currentFloor) {
+  58   2              moveUp(targetFloor - currentFloor);
+  59   2          } else if (targetFloor < currentFloor) {
+  60   2              moveDown(currentFloor - targetFloor);
+  61   2          }
+  62   1          stop(currentFloor);
+  63   1      }
+  64          
+  65          void main() {
+  66   1          UP_LED = 0;  // Initialize up LED to OFF
+  67   1          DOWN_LED = 0;  // Initialize down LED to OFF
+  68   1       
+  69   1          while (1) {
+  70   2            if(P0 == 1){
+  71   3              control(0);
+  72   3            }
+  73   2             else if (P0 == 32) {
+  74   3                  control(5);
+  75   3              } else if (P0 == 2) {
+  76   3                  control(1);
+  77   3              } else if (P0 == 4) {
+  78   3                  control(2);
+  79   3              } else if (P0 == 8) {
+  80   3                  control(3);
+  81   3              } else if (P0 == 16) {
+  82   3                  control(4);
+  83   3              }
+  84   2          }
+  85   1      }
+  86          
+  87          
+  88          /*
+  89          #include <REG51.H>
+  90          #include <stdio.h>
+  91          int p,q,r;
+  92          //q=10; //for every motor freezing count
+  93          //r=10; //rotation of the motor 0 min 32000 max
+  94          delay(c)
+  95          {
+  96          int i,j;
+  97          if(c==0)
+  98          {
+  99          for(i=0;i<500;i++)
+ 100          {
+ 101          for(j=0;j<r;j++);
+ 102          }
+ 103          }
+ 104          return c;
+ 105          }
+ 106          // elevator going up
+ 107          up(b)
+ 108          {
+ 109          int i,j;
+ 110          for (i=1;i<=b;i++)
+ 111          {
+ 112          for (j=0;j<=10;j++)
+ 113          {
+ 114          P3=1;
+ 115          delay(0);
+ 116          P3=2;
+C51 COMPILER V9.60.7.0   LAB2                                                              02/20/2024 13:24:59 PAGE 3   
+
+ 117          delay(0);
+ 118          P3=4;
+ 119          delay(0);
+ 120          P3=8;
+ 121          delay(0);
+ 122          P3=16;
+ 123          delay(0);
+ 124          }
+ 125          P2=p+i;
+ 126          }
+ 127          p=p+b;
+ 128          return b;
+ 129          }
+ 130          // elevator going down
+ 131          down(b)
+ 132          {
+ 133          int i,j;
+ 134          for (i=1;i<=b;i++)
+ 135          {
+ 136          for (j=0;j<=q;j++)
+ 137          {
+ 138          P3=16;
+ 139          delay(0);
+ 140          P3=8;
+ 141          P3=4;
+ 142          delay(0);
+ 143          P3=2;
+ 144          delay(0);
+ 145          P3=1;
+ 146          delay(0);
+ 147          }
+ 148          P2=p-i;
+ 149          }
+ 150          p=p-b;
+ 151          return b;
+ 152          }
+ 153          control(a)
+ 154          {
+ 155          int difference;
+ 156          if(a>p)
+ 157          {
+ 158          difference=a-p;
+ 159          up(difference);
+ 160          }
+ 161          if(a<p)
+ 162          {
+ 163          difference=p-a;
+ 164          down(difference);
+ 165          }
+ 166          return a;
+ 167          }
+ 168          main()
+ 169          {
+ 170          int p1;
+ 171          p=0;
+ 172          P2=p;
+ 173          while(1)
+ 174          {
+ 175          if(P0==2)
+ 176          {
+ 177          p1=1;
+ 178          control(1);
+C51 COMPILER V9.60.7.0   LAB2                                                              02/20/2024 13:24:59 PAGE 4   
+
+ 179          }
+ 180          if(P0==4)
+ 181          {
+ 182          p1=2;
+ 183          control(2);
+ 184          }
+ 185          if(P0==8)
+ 186          {
+ 187          p1=3;
+ 188          control(3);
+ 189          }
+ 190          if(P0==16)
+ 191          {
+ 192          p1=4;
+ 193          delay(0);
+ 194          control(4);
+ 195          }
+ 196          if(P0==32)
+ 197          {
+ 198          p1=5;
+ 199          control(5);
+ 200          }
+ 201          if(P0==1)
+ 202          {
+ 203          p1=0;
+ 204          control(0);
+ 205          }
+ 206          }
+ 207          }
+ 208          
+ 209          */
+ 210          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    365    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

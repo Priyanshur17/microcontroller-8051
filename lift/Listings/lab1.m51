@@ -1,0 +1,209 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    02/20/2024  13:25:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\lab2.obj TO .\Objects\lab1 PRINT (.\Listings\lab1.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\lab2.obj (LAB2)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\lab1 (LAB2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0018H     UNIT         ?DT?LAB2
+            DATA    0020H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0022H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     008BH     UNIT         ?C?LIB_CODE
+            CODE    0917H     004BH     UNIT         ?PR?MAIN?LAB2
+            CODE    0962H     004AH     UNIT         ?PR?_CONTROL?LAB2
+            CODE    09ACH     0048H     UNIT         ?PR?_MOVEUP?LAB2
+            CODE    09F4H     0048H     UNIT         ?PR?_MOVEDOWN?LAB2
+            CODE    0A3CH     0020H     UNIT         ?PR?_DELAY?LAB2
+            CODE    0A5CH     001BH     UNIT         ?C_INITSEG
+            CODE    0A77H     001AH     UNIT         ?PR?_DISPLAYDIGIT?LAB2
+            CODE    0A91H     000EH     UNIT         ?PR?_STOP?LAB2
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\lab1 (LAB2)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?LAB2
+  +--> ?C_INITSEG
+
+?PR?MAIN?LAB2                  -----    -----
+  +--> ?PR?_CONTROL?LAB2
+
+?PR?_CONTROL?LAB2              0020H    0002H
+  +--> ?PR?_MOVEUP?LAB2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/20/2024  13:25:00  PAGE 2
+
+
+  +--> ?PR?_MOVEDOWN?LAB2
+  +--> ?PR?_STOP?LAB2
+
+?PR?_MOVEUP?LAB2               -----    -----
+  +--> ?PR?_DISPLAYDIGIT?LAB2
+  +--> ?PR?_DELAY?LAB2
+
+?PR?_MOVEDOWN?LAB2             -----    -----
+  +--> ?PR?_DISPLAYDIGIT?LAB2
+  +--> ?PR?_DELAY?LAB2
+
+?PR?_STOP?LAB2                 -----    -----
+  +--> ?PR?_DISPLAYDIGIT?LAB2
+  +--> ?PR?_DELAY?LAB2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\lab1 (LAB2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:09ACH         PUBLIC        _moveUp
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0962H         PUBLIC        _control
+  D:0008H         PUBLIC        currentFloor
+  C:0A3CH         PUBLIC        _delay
+  C:0917H         PUBLIC        main
+  D:000AH         PUBLIC        floo
+  C:0A91H         PUBLIC        _stop
+  C:09F4H         PUBLIC        _moveDown
+  B:00B0H.0       PUBLIC        UP_LED
+  D:000CH         PUBLIC        segments
+  C:0A86H         PUBLIC        _displayDigit
+  B:00B0H.1       PUBLIC        DOWN_LED
+  C:0A7BH         SYMBOL        L?0045
+  -------         PROC          L?0044
+  -------         ENDPROC       L?0044
+  C:0A7BH         SYMBOL        L?0045
+  -------         PROC          _DISPLAYDIGIT
+  D:0006H         SYMBOL        digit
+  C:0A86H         LINE#         17
+  C:0A86H         LINE#         18
+  C:0A90H         LINE#         19
+  -------         ENDPROC       _DISPLAYDIGIT
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        count
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0A3CH         LINE#         21
+  C:0A3CH         LINE#         23
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/20/2024  13:25:00  PAGE 3
+
+
+  C:0A46H         LINE#         24
+  C:0A5BH         LINE#         25
+  -------         ENDPROC       _DELAY
+  -------         PROC          _MOVEUP
+  D:0082H         SYMBOL        diff
+  C:09ACH         LINE#         27
+  C:09B0H         LINE#         28
+  C:09B2H         LINE#         29
+  C:09B4H         LINE#         31
+  C:09D3H         LINE#         32
+  C:09D6H         LINE#         33
+  C:09DDH         LINE#         34
+  C:09E7H         LINE#         35
+  C:09F3H         LINE#         36
+  -------         ENDPROC       _MOVEUP
+  -------         PROC          _MOVEDOWN
+  D:0082H         SYMBOL        diff
+  C:09F4H         LINE#         38
+  C:09F8H         LINE#         39
+  C:09FAH         LINE#         40
+  C:09FCH         LINE#         42
+  C:0A1CH         LINE#         43
+  C:0A1FH         LINE#         44
+  C:0A26H         LINE#         45
+  C:0A30H         LINE#         46
+  C:0A3BH         LINE#         47
+  -------         ENDPROC       _MOVEDOWN
+  -------         PROC          _STOP
+  D:0006H         SYMBOL        currentFloor
+  C:0A91H         LINE#         49
+  C:0A91H         LINE#         50
+  C:0A93H         LINE#         51
+  C:0A95H         LINE#         52
+  C:0A98H         LINE#         53
+  -------         ENDPROC       _STOP
+  -------         PROC          _CONTROL
+  D:0020H         SYMBOL        targetFloor
+  C:0962H         LINE#         56
+  C:0966H         LINE#         57
+  C:0977H         LINE#         58
+  C:0984H         LINE#         59
+  C:0997H         LINE#         60
+  C:09A5H         LINE#         61
+  C:09A5H         LINE#         62
+  -------         ENDPROC       _CONTROL
+  -------         PROC          MAIN
+  C:0917H         LINE#         65
+  C:0917H         LINE#         66
+  C:0919H         LINE#         67
+  C:091BH         LINE#         69
+  C:091BH         LINE#         70
+  C:0920H         LINE#         71
+  C:0923H         LINE#         72
+  C:0925H         LINE#         73
+  C:092AH         LINE#         74
+  C:092EH         LINE#         75
+  C:0935H         LINE#         76
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/20/2024  13:25:00  PAGE 4
+
+
+  C:0939H         LINE#         77
+  C:0940H         LINE#         78
+  C:0944H         LINE#         79
+  C:094BH         LINE#         80
+  C:0952H         LINE#         81
+  C:0959H         LINE#         82
+  C:0960H         LINE#         83
+  C:0960H         LINE#         84
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LAB2
+
+  -------         MODULE        ?C?SIDIV
+  C:088CH         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:08C2H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0187H BYTE (19%) *
+******************************************************************************
+
+Program Size: data=35.0 xdata=0 code=674
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
